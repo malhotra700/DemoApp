@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_allposts"
+        android:title="All Posts" />
+    <item
+        android:icon="@drawable/ic_myposts"
+        android:title="My Posts" />
+
+</menu>

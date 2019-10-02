@@ -9,12 +9,12 @@
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:src="@drawable/pic">
+        android:src="@drawable/headphone">
     </ImageView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ABC XYZ"
+        android:text="Demo App"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_marginTop="5dp">

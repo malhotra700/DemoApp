@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,16 +59,24 @@ public class HomeActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_navigation_drawer);
         setUpDrawerContent(navigationView);
 
+
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.l_layout, new HomeFragment());
+        tx.commit();
+
     }
     public void selectItemDrawer(MenuItem menuItem){
         Fragment myfragment=null;
         Class fragmentClass;
         switch (menuItem.getItemId()){
+            case R.id.home_nav:
+                fragmentClass=HomeFragment.class;
+                break;
             case R.id.about:
                 fragmentClass=About.class;
                 break;
                 default:
-                    fragmentClass=About.class;
+                    fragmentClass=HomeFragment.class;
                     break;
         }
         try{
