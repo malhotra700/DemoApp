@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:icon="@drawable/ic_allposts"
-        android:title="All Posts" />
+        android:title="All Posts"
+        android:id="@+id/posts"/>
     <item
         android:icon="@drawable/ic_myposts"
-        android:title="My Posts" />
+        android:title="My Posts"
+        android:id="@+id/myposts"/>
 
 </menu>

@@ -4,28 +4,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
+ * {@link CreatePost.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link HomeFragment#newInstance} factory method to
+ * Use the {@link CreatePost#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class CreatePost extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,7 +31,7 @@ public class HomeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public HomeFragment() {
+    public CreatePost() {
         // Required empty public constructor
     }
 
@@ -47,11 +41,11 @@ public class HomeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Posts.
+     * @return A new instance of fragment CreatePost.
      */
     // TODO: Rename and change types and number of parameters
-    public static Posts newInstance(String param1, String param2) {
-        Posts fragment = new Posts();
+    public static CreatePost newInstance(String param1, String param2) {
+        CreatePost fragment = new CreatePost();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,38 +66,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_home, container, false);
-        BottomNavigationView bottomNavigationView=(BottomNavigationView)view.findViewById(R.id.nav_bottom);
-        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Posts()).commit();
-
-        FloatingActionButton fab =(FloatingActionButton)view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction tx = getActivity().getSupportFragmentManager().beginTransaction();
-                tx.replace(R.id.l_layout, new CreatePost());
-                tx.commit();
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_create_post, container, false);
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener=new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment selectedFragment=null;
-            switch (menuItem.getItemId()){
-                case R.id.posts:
-                    selectedFragment=new Posts();
-                    break;
-                case R.id.myposts:
-                    selectedFragment=new MyPosts();
-                    break;
-            }
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
-            return true;
-        }
-    };
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

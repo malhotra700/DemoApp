@@ -29,9 +29,8 @@
             android:orientation="vertical"
             android:background="@color/colorBackground2"
             android:id="@+id/l_layout">
+
         </FrameLayout>
-
-
     </LinearLayout>
 
 
