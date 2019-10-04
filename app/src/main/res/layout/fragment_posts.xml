@@ -6,10 +6,10 @@
     tools:context=".Posts">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Posts"
-        android:textSize="60sp"/>
+        android:id="@+id/recycler_list">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

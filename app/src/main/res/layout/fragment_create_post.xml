@@ -6,10 +6,49 @@
     tools:context=".CreatePost">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Create A Post"
-        android:textSize="60sp"/>
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/pic"
+            android:id="@+id/profile_picture_createpost">
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/profile_picture_createpost"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="Username"
+            android:textSize="30sp"
+            android:id="@+id/username_createpost"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignTop="@+id/username_createpost"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/editext_createpost">
+        </EditText>
+
+        <Button
+            android:id="@+id/post_button_createpost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/editext_createpost"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="220dp"
+            android:onClick="btnPost"
+            android:padding="10dp"
+            android:text="Post"></Button>
+    </RelativeLayout>
 
 </FrameLayout>

@@ -4,11 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +41,10 @@ public class Posts extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    DatabaseReference reference;
+    RecyclerView recyclerView;
+    ArrayList<Profile> list;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,7 +83,31 @@ public class Posts extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_posts, container, false);
+        View view=inflater.inflate(R.layout.fragment_posts, container, false);
+
+
+        recyclerView=(RecyclerView)view.findViewById(R.id.recycler_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        list=new ArrayList<Profile>();
+        recyclerView.setAdapter(new ProgrammingAdapter(getContext(),list));
+        reference= FirebaseDatabase.getInstance().getReference().child("Profiles");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                    Profile p=dataSnapshot1.getValue(Profile.class);
+                    list.add(p);
+                }
+                recyclerView.setAdapter(new ProgrammingAdapter(getContext(),list));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(),"Something Went Wrong!",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
