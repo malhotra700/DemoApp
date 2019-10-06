@@ -1,11 +1,14 @@
 package com.example.demoapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+//import android.support.v4.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +26,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -51,6 +58,10 @@ public class CreatePost extends Fragment implements View.OnClickListener {
     DatabaseReference ref;
     Profile profile;
     Uri imgPath=Uri.parse("android.resource://com.example.demoapp/"+R.drawable.pic);
+    GoogleSignInAccount acct;
+    Date currentTime;
+    private Context mContext;
+    private AppCompatActivity mActivity;
 
     private OnFragmentInteractionListener mListener;
 
@@ -96,11 +107,11 @@ public class CreatePost extends Fragment implements View.OnClickListener {
         postButtonCreatePost=(Button)view.findViewById(R.id.post_button_createpost);
         postButtonCreatePost.setOnClickListener(this);
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getActivity());
+        acct = GoogleSignIn.getLastSignedInAccount(getActivity());
         if (acct != null) {
             usernameCreatePost.setText(acct.getDisplayName());
             imgPath=acct.getPhotoUrl();
-            profilePicCreatePost.setImageURI(imgPath);
+            Picasso.get().load(imgPath.toString()).into(profilePicCreatePost);
         }
 
         database=FirebaseDatabase.getInstance();
@@ -117,19 +128,11 @@ public class CreatePost extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                getValues();
-                ref.child("User1").setValue(profile);
-                Toast.makeText(getContext(),"Posted",Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        getValues();
+        currentTime=Calendar.getInstance().getTime();
+        ref.child(acct.getId()+currentTime).setValue(profile);
+        Toast.makeText(mContext,"Posted",Toast.LENGTH_LONG).show();
+        mActivity.getSupportFragmentManager().beginTransaction().replace(R.id.l_layout,new HomeFragment()).commit();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -142,6 +145,9 @@ public class CreatePost extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mContext=context;
+        mActivity=(AppCompatActivity)mContext;
+
     }
 
     @Override

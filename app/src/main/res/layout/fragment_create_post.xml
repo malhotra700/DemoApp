@@ -29,14 +29,23 @@
             android:id="@+id/username_createpost"/>
 
         <EditText
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="top|left"
+            android:maxLines="10"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:scrollbars="vertical"
             android:layout_alignTop="@+id/username_createpost"
             android:layout_marginTop="70dp"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:id="@+id/editext_createpost">
+            android:id="@+id/editext_createpost"
+            android:background="@color/white"
+            android:hint="Enter your post here..."
+            android:padding="5dp">
         </EditText>
 
         <Button
