@@ -1,6 +1,7 @@
 package com.example.demoapp;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,11 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
     public void onBindViewHolder(@NonNull ProgrammingViewHolder holder, int position) {
         holder.username.setText(profiles.get(position).getUsername());
         holder.content.setText(profiles.get(position).getContent());
-        Picasso.get().load(profiles.get(position).getProfilepic()).into(holder.imageView);
+        if(profiles.get(position).getProfilepic()!=null)
+            Picasso.get().load(profiles.get(position).getProfilepic()).into(holder.imageView);
+        else{
+            Uri imgPath=Uri.parse("android.resource://com.example.demoapp/"+R.drawable.pic);
+            Picasso.get().load(imgPath.toString()).into(holder.imageView);}
 
     }
 

@@ -4,5 +4,6 @@
     <string name="open">Open</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">This is a simple app where a user can login and share the news,results,notices,etc.
+    Developed by : Anant Malhotra(1806064,C.S.E)</string>
 </resources>

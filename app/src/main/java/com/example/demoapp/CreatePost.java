@@ -117,6 +117,8 @@ public class CreatePost extends Fragment implements View.OnClickListener {
         database=FirebaseDatabase.getInstance();
         ref=database.getReference("Profiles");
         profile=new Profile();
+
+
         return view;
     }
 

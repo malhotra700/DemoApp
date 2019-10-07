@@ -54,8 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/editext_createpost"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="220dp"
-            android:onClick="btnPost"
+            android:layout_marginTop="160dp"
+            android:background="@color/colorBackground3"
+            android:textColor="@color/white"
             android:padding="10dp"
             android:text="Post"></Button>
     </RelativeLayout>

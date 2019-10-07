@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:id="@+id/post_content_imageView"
             android:layout_gravity="center"
             android:src="@drawable/pic">
@@ -21,19 +21,24 @@
             android:layout_height="wrap_content"
             android:text="Anonymous"
             android:layout_gravity="center"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:layout_weight="1"
             android:padding="16dp"
             android:textStyle="bold"
             android:id="@+id/post_content_username">
         </TextView>
     </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Content"
         android:id="@+id/post_content"
-        android:textSize="24sp">
+        android:textSize="24sp"
+        android:padding="10dp">
 
     </TextView>
 

@@ -9,7 +9,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="60sp"
-        android:text="About" />
+        android:padding="20dp"
+        android:gravity="top"
+        android:textSize="24sp"
+        android:textColor="@color/colorBackground3"
+        android:text="@string/about" />
 
 </FrameLayout>
