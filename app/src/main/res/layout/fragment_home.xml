@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:background="@color/colorBackground1"
         android:layout_height="56dp"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         app:menu="@menu/top_navigation"/>
     <FrameLayout
         android:layout_width="match_parent"
@@ -18,22 +18,5 @@
         android:layout_below="@+id/nav_bottom"
         android:id="@+id/fragment_container">
 
-        <TextView
-            android:id="@+id/text_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-             />
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            app:backgroundTint="@color/colorBackground3"
-            android:src="@drawable/ic_fab_icon"
-            android:tint="@color/white"
-            android:layout_margin="16dp" />
     </FrameLayout>
 </RelativeLayout>

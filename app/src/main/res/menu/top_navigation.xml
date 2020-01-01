@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:icon="@drawable/ic_allposts"
-        android:title="All Posts"
-        android:id="@+id/posts"/>
+        android:icon="@drawable/ic_mic"
+        android:title="Prescription"
+        android:id="@+id/voice_Prescription"/>
     <item
-        android:icon="@drawable/ic_myposts"
-        android:title="My Posts"
-        android:id="@+id/myposts"/>
+        android:icon="@drawable/ic_appointments"
+        android:title="Appointments"
+        android:id="@+id/appointments"/>
+    <item
+        android:icon="@drawable/ic_profile"
+        android:title="Profile"
+        android:id="@+id/my_Profile"/>
+
 
 </menu>
